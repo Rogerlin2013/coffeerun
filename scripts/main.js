@@ -12,6 +12,7 @@
     
     window.myTruck = myTruck;
 
+    var Validation = App.Validation;
     var checkList = new CheckList(CHECKLIST_SELECTOR);
     var formHandler = new FormHandler(FORM_SELECTOR);
 
@@ -19,6 +20,8 @@
         myTruck.createOrder.call(myTruck, data);
         checkList.addRow.call(checkList, data);
     });
+
+    formHandler.addInputHandler(Validation.isCompanyEmail);
 
     checkList.addClickHandler(myTruck.deliverOrder.bind(myTruck));
 
